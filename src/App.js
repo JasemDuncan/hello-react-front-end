@@ -1,33 +1,28 @@
 import './App.css';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import Greetings from './components/greetings';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const API_URL = 'http://localhost:3000/api/v1/greetings';
+import Greeting from './components/greetings';
 
-function getAPIData() {
-  return axios.get(API_URL).then((response) => response.data);
-}
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-function App() {
-  const [greetings, setGreetings] = useState([]);
-
-  useEffect(() => {
-    let mounted = true;
-    getAPIData().then((items) => {
-      if (mounted) {
-        setGreetings(items);
-      }
-    });
-    return () => mounted = false;
-  }, []);
-
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-      <Greetings greetings={greetings} />
-    </div>
-  );
+  render() {
+    return (
+      <>
+        <div>          
+          <BrowserRouter>
+            <Routes>
+              <Route exact path="/" element={<Greeting />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </>
+    );
+  }
 }
 
 export default App;
