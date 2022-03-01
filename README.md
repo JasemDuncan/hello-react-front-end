@@ -1,4 +1,4 @@
-# hello-react-front_end
+# HELLO REACT FRONT END 🚀
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 This is a rails app API, that render random greetings to an react app using API endpoint, it has a table greetings inside a postgresql database.
